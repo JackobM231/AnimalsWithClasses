@@ -1,5 +1,7 @@
 class Chicken < Animal
+  LEGS_NO = 2
+
   def initialize(name)
-    super name, num_of_legs = 2
+    super name
   end
 end

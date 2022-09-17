@@ -1,5 +1,7 @@
 class Spider < Animal
+  LEGS_NO = 8
+
   def initialize(name)
-    super name, num_of_legs = 8
+    super name
   end
 end

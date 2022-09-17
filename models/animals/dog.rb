@@ -1,5 +1,7 @@
 class Dog < Animal
+  LEGS_NO = 4
+
   def initialize(name)
-    super name, num_of_legs = 4
+    super name
   end
 end
