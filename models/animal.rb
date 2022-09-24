@@ -2,18 +2,11 @@ class Animal
   LEGS_NO = nil
   TYPES = ["dog", "spider", "chicken"]
 
-  #attr_accessor :name, :num_of_legs, :time_of_creation, :type
   attr_accessor :name, :time_of_creation, :type
 
   @@collection = []
   @@collection_names = []
 
-  # def initialize(name="", num_of_legs = 0)
-  #   @name = name.capitalize
-  #   @num_of_legs = num_of_legs
-  #   @time_of_creation = Time.new.strftime("%Y-%m-%d %H:%M:%S")
-  #   @type = self.class.name.downcase
-  # end
 
   def initialize(name="")
     @name = name.capitalize
@@ -27,14 +20,14 @@ class Animal
   end
 
 
+  # Formated message with object
   def display(object)
-    # Formated message with object
     puts ("#{object.type}, #{object.name}, #{object.num_of_legs}, #{object.time_of_creation}")
   end
 
 
+  # Append current object to Animal class collection
   def to_collection(object)
-    # Append current object to Animal class collection
     return false if @@collection_names.include?(object.name)
 
     @@collection_names.push(object.name)
@@ -43,8 +36,19 @@ class Animal
   end
 
 
+  # Check animal_types and returns annimal_type from available animal_types or return false
+  def check_type(animal_type)
+    if !animal_type.match?(/^dogs?$|^spiders?$|^chickens?$/i)
+      puts "Unknown animal type."
+      return false
+    end
+  
+    Animal::TYPES.detect { |type| animal_type.include?(type)}
+  end 
+
+
+  # Nicely lists all animals of that type (all if not provided)
   def list(animal_type='all')
-    # Nicely lists all animals of that type (all if not provided)
     case animal_type
     when 'all'
       @@collection.each { |element| display(element) }
@@ -56,8 +60,8 @@ class Animal
   end
 
 
+  # Sums all legs of animals of that type and display them
   def sum(animal_type="all")
-    # Sums all legs of animals of that type and display them
     sum = 0
 
     case animal_type
@@ -82,8 +86,8 @@ class Animal
   end
 
 
+  # Creates a new animal of that type, outputs a message depending on the success
   def add(animal_type="none", animal_name="none")
-    # Creates a new animal of that type, outputs a message depending on the success
     new_class = Object.const_get(animal_type.capitalize)
     new_animal = new_class.new(animal_name)
     unless to_collection(new_animal)
@@ -93,8 +97,8 @@ class Animal
   end
 
 
+  # Removes the said animal from collection and outputs a message depanding on the success
   def remove(animal_name="")
-    # Removes the said animal from collection and outputs a message depanding on the success
     if animal_name == ""
       return puts "Error. Please use name of animal to remove."
     end
