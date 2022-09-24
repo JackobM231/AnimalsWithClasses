@@ -20,19 +20,15 @@ class Invoker
   end
   
   def invoke(args)
-    if !@command
-      return false
-    end
+    return false if !@command
 
-    if !@command.validation(args)
-      return false
-    end
+    return false if !@command.validation(args)
 
     @@result = @command.execute
   end
 
   def command(args)
-    @command ||= COMMANDS.fetch(args[0].downcase).new
+    @command ||= COMMANDS.fetch(args[0]).new
   rescue KeyError
     puts "Command not found"
   end

@@ -1,12 +1,10 @@
 class Animal
   LEGS_NO = nil
   TYPES = ["dog", "spider", "chicken"]
-
-  attr_accessor :name, :time_of_creation, :type
-
   @@collection = []
   @@collection_names = []
 
+  attr_accessor :name, :time_of_creation, :type
 
   def initialize(name="")
     @name = name.capitalize
@@ -14,17 +12,14 @@ class Animal
     @type = self.class.name.downcase
   end
 
-
   def num_of_legs
     self.class::LEGS_NO
   end
-
 
   # Formated message with object
   def display(object)
     puts ("#{object.type}, #{object.name}, #{object.num_of_legs}, #{object.time_of_creation}")
   end
-
 
   # Append current object to Animal class collection
   def to_collection(object)
@@ -35,7 +30,6 @@ class Animal
     return true
   end
 
-
   # Check animal_types and returns annimal_type from available animal_types or return false
   def check_type(animal_type)
     if !animal_type.match?(/^dogs?$|^spiders?$|^chickens?$/i)
@@ -45,7 +39,6 @@ class Animal
   
     Animal::TYPES.detect { |type| animal_type.include?(type)}
   end 
-
 
   # Nicely lists all animals of that type (all if not provided)
   def list(animal_type='all')
@@ -58,7 +51,6 @@ class Animal
       end
     end
   end
-
 
   # Sums all legs of animals of that type and display them
   def sum(animal_type="all")
@@ -85,7 +77,6 @@ class Animal
     end
   end
 
-
   # Creates a new animal of that type, outputs a message depending on the success
   def add(animal_type="none", animal_name="none")
     new_class = Object.const_get(animal_type.capitalize)
@@ -95,7 +86,6 @@ class Animal
     end
     puts "#{animal_type.capitalize} created!"
   end
-
 
   # Removes the said animal from collection and outputs a message depanding on the success
   def remove(animal_name="")
