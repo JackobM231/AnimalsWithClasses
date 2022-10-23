@@ -1,7 +1,11 @@
-class Spider < Animal
-  LEGS_NO = 8
+require_relative "./animal.rb"
 
-  def initialize(name)
-    super name
+module Animals
+  class Spider < Animal
+    LEGS_NO = 8
+
+    def initialize(name)
+      super name
+    end
   end
 end

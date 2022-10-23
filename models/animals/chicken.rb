@@ -1,7 +1,11 @@
-class Chicken < Animal
-  LEGS_NO = 2
+require_relative "./animal.rb"
 
-  def initialize(name)
-    super name
+module Animals
+  class Chicken < Animal
+    LEGS_NO = 2
+
+    def initialize(name)
+      super name
+    end
   end
 end
