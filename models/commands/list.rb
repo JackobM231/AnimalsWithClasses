@@ -20,14 +20,6 @@ module Commands
       @error_messages ||= []
     end
 
-    # def animal_type
-    #   @animal_type ||= args.first
-    # end
-
-    # def in_animal_types?
-    #   Animal::TYPES.detect { |k, v| animal_type.match? k}
-    # end
-
     def animal_type
       @animal_type ||= args.first
       get_animal_type if args.first != nil
@@ -38,9 +30,5 @@ module Commands
       x ? x[1].name.split("::").last.downcase : false
     end
     
-    # def execute
-    #   (@@args_length > 1) ? Animal.list(Animal.check_type(@@args[1])) : Animal.list
-    #   true
-    # end
   end
 end

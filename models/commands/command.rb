@@ -16,4 +16,5 @@ class Command
   def valid?
     raise NotImplementedError, "Method #{__method__} not implemented."
   end
+  
 end

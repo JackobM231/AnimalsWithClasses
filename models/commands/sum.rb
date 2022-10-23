@@ -4,17 +4,8 @@ module Commands
   class Sum < Command
     ARGS_NUM = [0, 1]
 
-    # def execute
-    #   (@@args_length > 1) ? Animal.sum(Animal.check_type(@@args[1])) : Animal.sum
-    #   true
-    # end
-
     def execute
       return Animal.sum(animal_type) if valid?
-      # return (
-      #   sum = Animal.sum(animal_type)
-      #   puts "Sum of #{animal_type} legs equals #{sum}."
-      #   ) if valid?
       puts error_messages
     end
 

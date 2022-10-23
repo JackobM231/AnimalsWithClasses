@@ -7,5 +7,6 @@ module Animals
     def initialize(name)
       super name
     end
+    
   end
 end

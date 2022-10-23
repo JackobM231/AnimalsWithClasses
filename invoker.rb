@@ -20,7 +20,6 @@ class Invoker
   end
 
   def invoke
-    # command.new(cmd_args).execute!
     command.new(cmd_args).execute
   end
 
@@ -31,9 +30,9 @@ class Invoker
   end
 
   def command
-    # @command ||= COMMANDS.fetch(@attrs.first).new
     @command ||= COMMANDS.fetch(@attrs.first)
   rescue KeyError
     puts "Command not found"
   end
+  
 end

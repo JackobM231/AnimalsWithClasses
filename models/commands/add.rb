@@ -33,5 +33,6 @@ module Commands
     rescue NoMethodError
       puts "Animal type not supported."
     end
+    
   end
 end

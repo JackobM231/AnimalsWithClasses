@@ -22,10 +22,5 @@ module Commands
       @animal_name ||= args[0].capitalize
     end
 
-
-    # def execute
-    #   Animal.remove(@@args[1])
-    #   true
-    # end
   end
 end
