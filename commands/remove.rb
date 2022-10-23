@@ -6,6 +6,7 @@ module Commands
 
     def execute
       return Animal.remove(animal_name) if valid?
+
       puts error_messages
     end
 
@@ -14,13 +15,8 @@ module Commands
       error_messages.empty?
     end
 
-    def error_messages
-      @error_messages ||= []
-    end
-
     def animal_name
       @animal_name ||= args[0].capitalize
     end
-
   end
 end

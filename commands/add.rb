@@ -5,7 +5,8 @@ module Commands
     ARGS_NUM = [2]
 
     def execute
-      return klass.create!(animal_name) if valid?
+      return klass.create!(animal_name) if (valid? and !klass.nil?)
+
       puts error_messages
     rescue StandardError => e
       puts e.message
@@ -14,10 +15,6 @@ module Commands
     def valid?
       error_messages.push("Wrong number of arguments.") if !ARGS_NUM.include? args.size
       error_messages.empty?
-    end
-
-    def error_messages
-      @error_messages ||= []
     end
     
     def animal_type
@@ -33,6 +30,5 @@ module Commands
     rescue NoMethodError
       puts "Animal type not supported."
     end
-    
   end
 end

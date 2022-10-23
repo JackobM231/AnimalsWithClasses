@@ -1,4 +1,4 @@
-Dir[File.join(__dir__, 'models/commands', '*.rb')].each { |file| require file } 
+Dir[File.join(__dir__, 'commands', '*.rb')].each { |file| require file } 
 
 class Invoker
   COMMANDS = {
@@ -20,7 +20,7 @@ class Invoker
   end
 
   def invoke
-    command.new(cmd_args).execute
+    command.new(cmd_args).execute if !command.nil?
   end
 
   private
@@ -34,5 +34,4 @@ class Invoker
   rescue KeyError
     puts "Command not found"
   end
-  
 end

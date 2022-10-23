@@ -1,4 +1,4 @@
-require_relative "../animals/animal.rb"
+require_relative "../models/animal.rb"
 
 class Command
   ARGS_NUM = nil
@@ -16,5 +16,8 @@ class Command
   def valid?
     raise NotImplementedError, "Method #{__method__} not implemented."
   end
-  
+
+  def error_messages
+    @error_messages ||= []
+  end
 end

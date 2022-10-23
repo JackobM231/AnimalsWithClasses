@@ -1,4 +1,4 @@
-require_relative "./animal.rb"
+require_relative "../animal.rb"
 
 module Animals
   class Spider < Animal
@@ -7,6 +7,5 @@ module Animals
     def initialize(name)
       super name
     end
-    
   end
 end

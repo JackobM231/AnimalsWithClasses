@@ -1,7 +1,7 @@
 class Animal
   LEGS_NO = nil
 
-  Dir[File.join(__dir__, '*.rb')].each { |file| require file } 
+  Dir[File.join(__dir__, './animals','*.rb')].each { |file| require file } 
 
   TYPES = {
     /^dogs?$/i => Animals::Dog,
@@ -36,6 +36,7 @@ class Animal
         raise StandardError, "Animal name is alread taken."
       else
         new(name).save
+        puts "Animal created!"
       end
     end
 
@@ -45,6 +46,7 @@ class Animal
 
     def list(animal_type)
       return all.each { |el| el.display } if !animal_type
+      
       all.filter_map { |animal| animal.display if animal.type == animal_type }
     end
 
@@ -64,6 +66,5 @@ class Animal
       
       all.filter_map { |animal| all.delete(animal) if animal.name == animal_name}.any? ? puts(success) : puts(failure)
     end
-
   end
 end
